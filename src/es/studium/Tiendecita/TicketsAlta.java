@@ -14,6 +14,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JFormattedTextField;
+import com.toedter.calendar.JDateChooser;
 
 public class TicketsAlta extends JFrame {
 
@@ -124,6 +126,13 @@ public class TicketsAlta extends JFrame {
 		textTotal.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				//Cierra la aplicacion
+				//Conectarse a la BD y hacer las consustas
+			}
+		});
 		btnAceptar.setBounds(12, 431, 97, 25);
 		contentPane.add(btnAceptar);
 		
@@ -137,6 +146,15 @@ public class TicketsAlta extends JFrame {
 		});
 		btnCancelar.setBounds(573, 431, 97, 25);
 		contentPane.add(btnCancelar);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd-MM-yyyy");
+		dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		dateChooser.setBounds(300, 27, 95, 20);
+		contentPane.add(dateChooser);
 		setVisible(true);
 	}
 }
